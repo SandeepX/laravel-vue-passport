@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,9 +13,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 Route::get('/', function () {
     return view('layout.app');
 });
+
+
+Route::get('/add-form', function () {
+    return view('ajax-add-form');
+});
+
+Route::post('submit-form', [AjaxController::class, 'submitForm'])->name('add.form');
 
 
